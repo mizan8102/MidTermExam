@@ -22,8 +22,11 @@ class Hall(Star_Cinema):
     def book_seats(self, id, li):
         if id in self.seats:
             for ll in li:
-                self.seats[id][ll[0]][ll[1]] = 1
-                print(f"Successfully booked = {ll}")
+                if self.seats[id][ll[0]][ll[1]] == 0:
+                    self.seats[id][ll[0]][ll[1]] = 1
+                    print(f"Successfully booked = {ll}")
+                else:
+                    print(f"{ll} already booked")
 
         else:
             print("Show id isnot exits")
@@ -59,7 +62,7 @@ while True:
 
     elif n == 2:
         idd = int(input("Enter Show Id:"))
-        hall.view_available_seats(23)
+        hall.view_available_seats(idd)
 
     elif n == 3:
         showId = int(input("Enter Show id:"))
